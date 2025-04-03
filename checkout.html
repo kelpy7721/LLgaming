@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа - LLGaming</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Стили для страницы оформления заказа */
+        .checkout-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .checkout-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .checkout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .checkout-products {
+            background-color: var(--light-dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .checkout-product-list {
+            margin-bottom: 2rem;
+        }
+        
+        .checkout-product {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .checkout-product-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        
+        .checkout-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .checkout-product-details {
+            flex: 1;
+        }
+        
+        .checkout-product-name {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .checkout-product-price {
+            color: var(--light-text);
+        }
+        
+        .checkout-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            padding-top: 1rem;
+        }
+        
+        .checkout-form {
+            background-color: var(--light-dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        
+        .checkout-form-section {
+            margin-bottom: 2rem;
+        }
+        
+        .checkout-form-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .form-row.full {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .payment-method {
+            flex: 1;
+            text-align: center;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover,
+        .payment-method.active {
+            border-color: var(--primary-color);
+            background-color: rgba(0, 168, 255, 0.05);
+        }
+        
+        .payment-method i {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--primary-color);
+        }
+        
+        .back-to-cart {
+            display: flex;
+            align-items: center;
+            color: var(--light-text);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .back-to-cart:hover {
+            color: var(--primary-color);
+        }
+        
+        .back-to-cart i {
+            margin-right: 0.5rem;
+        }
+        
+        .checkout-final-btn {
+            margin-top: 2rem;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .checkout-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                flex-direction: column;
+            }
+        }
+        
+        /* Улучшение стилей для select элементов */
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            appearance: none; /* Убираем стандартный вид */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg fill='%23ffffff' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            cursor: pointer;
+        }
+        
+        select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        /* Стили для option элементов */
+        select option {
+            background-color: var(--dark-color);
+            color: var(--text-color);
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>LL<span>Gaming</span></h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="index.html#products">Продукты</a></li>
+                <li><a href="index.html#about">О нас</a></li>
+                <li><a href="index.html#reviews">Отзывы</a></li>
+                <li><a href="index.html#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="checkout-container" style="margin-top: 100px;">
+        <a href="index.html" class="back-to-cart"><i class="fas fa-arrow-left"></i> Вернуться в магазин</a>
+        
+        <div class="checkout-header">
+            <h2>Оформление заказа</h2>
+        </div>
+        
+        <div class="checkout-grid">
+            <div class="checkout-form">
+                <form id="checkout-form">
+                    <div class="checkout-form-section">
+                        <h3>Личные данные</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Имя</label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Фамилия</label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Телефон</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-form-section">
+                        <h3>Адрес доставки</h3>
+                        <div class="form-row full">
+                            <div class="form-group">
+                                <label for="address">Адрес</label>
+                                <input type="text" id="address" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">Город</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="postal">Почтовый индекс</label>
+                                <input type="text" id="postal" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-form-section">
+                        <h3>Способ доставки</h3>
+                        <div class="form-group">
+                            <select id="delivery" required>
+                                <option value="" disabled selected>Выберите способ доставки</option>
+                                <option value="courier">Курьерская доставка (300 ₽)</option>
+                                <option value="pickup">Самовывоз (бесплатно)</option>
+                                <option value="post">Почта России (200 ₽)</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-form-section">
+                        <h3>Способ оплаты</h3>
+                        <div class="payment-methods">
+                            <div class="payment-method active" data-payment="card">
+                                <i class="fas fa-credit-card"></i>
+                                <div>Банковская карта</div>
+                            </div>
+                            <div class="payment-method" data-payment="cash">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <div>Наличными</div>
+                            </div>
+                            <div class="payment-method" data-payment="online">
+                                <i class="fas fa-wallet"></i>
+                                <div>Электронные деньги</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row full">
+                        <div class="form-group">
+                            <label for="comment">Комментарий к заказу</label>
+                            <textarea id="comment" rows="3"></textarea>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn checkout-final-btn">Подтвердить заказ</button>
+                </form>
+            </div>
+            
+            <div class="checkout-products">
+                <h3>Ваш заказ</h3>
+                <div id="checkout-product-list" class="checkout-product-list">
+                    <!-- Товары будут загружены из localStorage -->
+                </div>
+                <div class="checkout-total">
+                    <span>Итого:</span>
+                    <span id="checkout-total-price">0 ₽</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h1>LL<span>Gaming</span></h1>
+                <p>Превосходство в каждом клике</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h3>Продукты</h3>
+                    <ul>
+                        <li><a href="index.html#products">Мыши</a></li>
+                        <li><a href="index.html#products">Клавиатуры</a></li>
+                        <li><a href="index.html#products">Наушники</a></li>
+                        <li><a href="index.html#products">Коврики</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Компания</h3>
+                    <ul>
+                        <li><a href="index.html#about">О нас</a></li>
+                        <li><a href="#">Карьера</a></li>
+                        <li><a href="#">Блог</a></li>
+                        <li><a href="#">Новости</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Доставка</a></li>
+                        <li><a href="#">Возврат</a></li>
+                        <li><a href="#">Гарантия</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LLGaming. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Загрузка товаров из корзины
+        function loadCheckoutProducts() {
+            const productList = document.getElementById('checkout-product-list');
+            const totalElement = document.getElementById('checkout-total-price');
+            
+            // Получаем данные из localStorage
+            const cartProducts = JSON.parse(localStorage.getItem('cartProducts')) || [];
+            
+            if (cartProducts.length === 0) {
+                productList.innerHTML = '<p>В корзине нет товаров</p>';
+                totalElement.textContent = '0 ₽';
+                return;
+            }
+            
+            // Очищаем список
+            productList.innerHTML = '';
+            
+            // Добавляем товары из корзины
+            let totalPrice = 0;
+            
+            cartProducts.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.className = 'checkout-product';
+                
+                // Извлекаем числовое значение цены
+                const priceText = product.price || '0 ₽';
+                const priceValue = parseInt(priceText.replace(/\D/g, '')) || 0;
+                totalPrice += priceValue;
+                
+                productElement.innerHTML = `
+                    <div class="checkout-product-image">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="checkout-product-details">
+                        <div class="checkout-product-name">${product.name}</div>
+                        <div class="checkout-product-price">${product.price}</div>
+                    </div>
+                `;
+                
+                productList.appendChild(productElement);
+            });
+            
+            // Сохраняем общую стоимость товаров в переменной для дальнейшего использования
+            window.productsOnlyTotal = totalPrice;
+            
+            // Форматируем итоговую цену
+            totalElement.textContent = `${totalPrice.toLocaleString()} ₽`;
+            
+            // Проверяем, выбран ли уже способ доставки
+            updateTotalWithDelivery();
+        }
+        
+        // Функция для добавления стоимости доставки к общей стоимости
+        function updateTotalWithDelivery() {
+            const totalElement = document.getElementById('checkout-total-price');
+            const deliverySelect = document.getElementById('delivery');
+            
+            // Базовая стоимость всех товаров (без доставки)
+            let total = window.productsOnlyTotal || 0;
+            
+            // Если выбран способ доставки, добавляем его стоимость
+            if (deliverySelect && deliverySelect.value) {
+                const selectedOption = deliverySelect.options[deliverySelect.selectedIndex];
+                
+                // Извлекаем стоимость доставки из текста опции (например, "Курьерская доставка (300 ₽)")
+                const deliveryText = selectedOption.textContent;
+                const deliveryCostMatch = deliveryText.match(/\(([0-9]+)\s*₽\)/);
+                
+                // Найдем элемент информации о доставке
+                const deliveryInfoElement = document.querySelector('.checkout-delivery-info');
+                
+                if (deliveryCostMatch && deliveryCostMatch[1]) {
+                    // Добавляем стоимость доставки к общей сумме
+                    const deliveryCost = parseInt(deliveryCostMatch[1]);
+                    
+                    // Если доставка платная
+                    if (deliveryCost > 0) {
+                        total += deliveryCost;
+                        
+                        // Показываем строку с доставкой в итоговой сумме
+                        if (deliveryInfoElement) {
+                            const costInfoElement = document.getElementById('delivery-cost-info');
+                            if (costInfoElement) {
+                                costInfoElement.textContent = `${deliveryCost.toLocaleString()} ₽`;
+                            }
+                            deliveryInfoElement.style.display = 'flex';
+                        } else {
+                            // Если элемента нет, создаем его
+                            const checkoutTotal = document.querySelector('.checkout-total');
+                            const deliveryInfo = document.createElement('div');
+                            deliveryInfo.className = 'checkout-delivery-info';
+                            deliveryInfo.style = 'display: flex; justify-content: space-between; color: var(--light-text); font-size: 0.9rem; margin-bottom: 10px;';
+                            deliveryInfo.innerHTML = `
+                                <span>Доставка:</span>
+                                <span id="delivery-cost-info">${deliveryCost.toLocaleString()} ₽</span>
+                            `;
+                            checkoutTotal.insertAdjacentElement('beforebegin', deliveryInfo);
+                        }
+                    } else {
+                        // Если доставка бесплатная, скрываем строку с доставкой
+                        if (deliveryInfoElement) {
+                            deliveryInfoElement.style.display = 'none';
+                        }
+                    }
+                } else {
+                    // Если не удалось найти стоимость или формат не соответствует, скрываем строку
+                    if (deliveryInfoElement) {
+                        deliveryInfoElement.style.display = 'none';
+                    }
+                    
+                    // Проверяем, есть ли текст "Бесплатно" в опции
+                    if (deliveryText.includes('Бесплатно') || deliveryText.includes('бесплатно')) {
+                        // Это бесплатная доставка, ничего не добавляем к общей сумме
+                        if (deliveryInfoElement) {
+                            deliveryInfoElement.style.display = 'none';
+                        }
+                    }
+                }
+            } else {
+                // Если способ доставки не выбран, скрываем строку с доставкой
+                const deliveryInfoElement = document.querySelector('.checkout-delivery-info');
+                if (deliveryInfoElement) {
+                    deliveryInfoElement.style.display = 'none';
+                }
+            }
+            
+            // Обновляем отображаемую итоговую сумму
+            totalElement.textContent = `${total.toLocaleString()} ₽`;
+        }
+        
+        // Отслеживаем изменение выбора способа доставки
+        const deliverySelect = document.getElementById('delivery');
+        if (deliverySelect) {
+            deliverySelect.addEventListener('change', updateTotalWithDelivery);
+        }
+        
+        // Обработка выбора способа оплаты
+        const paymentMethods = document.querySelectorAll('.payment-method');
+        paymentMethods.forEach(method => {
+            method.addEventListener('click', function() {
+                // Удаляем активный класс со всех методов
+                paymentMethods.forEach(m => m.classList.remove('active'));
+                // Добавляем активный класс выбранному методу
+                this.classList.add('active');
+            });
+        });
+        
+        // Обработка отправки формы
+        const checkoutForm = document.getElementById('checkout-form');
+        if (checkoutForm) {
+            checkoutForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Показываем уведомление
+                showNotification('Ваш заказ успешно оформлен! Спасибо за покупку.');
+                
+                // Очищаем корзину
+                localStorage.setItem('cartProducts', JSON.stringify([]));
+                localStorage.setItem('cartItems', '0');
+                
+                // Перенаправляем на главную страницу через 2 секунды
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            });
+        }
+        
+        // Функция для уведомлений
+        function showNotification(message) {
+            // Проверяем, существует ли уже уведомление
+            let notification = document.querySelector('.notification');
+            
+            if (!notification) {
+                notification = document.createElement('div');
+                notification.className = 'notification';
+                document.body.appendChild(notification);
+                
+                // Добавляем стили для уведомления
+                const style = document.createElement('style');
+                style.textContent = `
+                    .notification {
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        background-color: var(--primary-color);
+                        color: white;
+                        padding: 15px 25px;
+                        border-radius: 5px;
+                        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                        transform: translateY(100px);
+                        opacity: 0;
+                        transition: all 0.3s ease;
+                        z-index: 1000;
+                    }
+                    
+                    .notification.show {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            // Обновляем сообщение и показываем уведомление
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            // Скрываем уведомление через 3 секунды
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Загружаем товары при загрузке страницы
+        window.addEventListener('DOMContentLoaded', loadCheckoutProducts);
+    </script>
+</body>
+</html>

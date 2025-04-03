@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLGaming - Премиальная геймерская периферия</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Навигация -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>LL<span>Gaming</span></h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">Главная</a></li>
+                <li><a href="#products">Продукты</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li class="cart"><a href="#"><i class="fas fa-shopping-cart"></i> <span>0</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero секция -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Превосходство в каждом клике</h1>
+            <p>Профессиональная геймерская периферия для настоящих победителей</p>
+            <a href="#products" class="btn">Смотреть товары</a>
+        </div>
+        <div class="hero-wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Популярные продукты -->
+    <section id="products" class="products">
+        <h2>Топовые устройства</h2>
+        <div class="product-filter">
+            <button class="filter-btn active" data-filter="all">Все</button>
+            <button class="filter-btn" data-filter="mouse">Мыши</button>
+            <button class="filter-btn" data-filter="keyboard">Клавиатуры</button>
+            <button class="filter-btn" data-filter="headset">Наушники</button>
+        </div>
+        <div class="product-container">
+            <div class="product-card" data-category="mouse">
+                <div class="product-image">
+                    <img src="img/gameMouse.png" alt="Игровая мышь">
+                    <div class="hover-effect"></div>
+                </div>
+                <div class="product-info">
+                    <h3>Quantum X7</h3>
+                    <p>Профессиональная игровая мышь</p>
+                    <div class="product-price">
+                        <span class="price">5 990 ₽</span>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-category="keyboard">
+                <div class="product-image">
+                    <img src="img/keyboard.jpg" alt="Игровая клавиатура">
+                    <div class="hover-effect"></div>
+                </div>
+                <div class="product-info">
+                    <h3>MechForce Pro</h3>
+                    <p>Механическая RGB клавиатура</p>
+                    <div class="product-price">
+                        <span class="price">8 490 ₽</span>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-category="headset">
+                <div class="product-image">
+                    <img src="img/headphones.jpg" alt="Игровые наушники">
+                    <div class="hover-effect"></div>
+                </div>
+                <div class="product-info">
+                    <h3>SoundWave 3D</h3>
+                    <p>Стереонаушники с объемным звуком</p>
+                    <div class="product-price">
+                        <span class="price">7 290 ₽</span>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card" data-category="mouse">
+                <div class="product-image">
+                    <img src="img/wirelessMouse.jpg" alt="Беспроводная мышь">
+                    <div class="hover-effect"></div>
+                </div>
+                <div class="product-info">
+                    <h3>Stealth X2</h3>
+                    <p>Беспроводная игровая мышь</p>
+                    <div class="product-price">
+                        <span class="price">6 490 ₽</span>
+                        <button class="add-to-cart"><i class="fas fa-cart-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Почему мы -->
+    <section id="about" class="features">
+        <h2>Почему выбирают LLGaming</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <i class="fas fa-trophy"></i>
+                <h3>Высшее качество</h3>
+                <p>Мы сотрудничаем только с ведущими производителями геймерского оборудования</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Быстрая доставка</h3>
+                <p>Доставка по всей России в течение 1-3 рабочих дней</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-headset"></i>
+                <h3>Поддержка 24/7</h3>
+                <p>Наши специалисты готовы помочь вам в любое время суток</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Гарантия 2 года</h3>
+                <p>Расширенная гарантия на всю продукцию нашего магазина</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section id="reviews" class="reviews">
+        <h2>Отзывы наших клиентов</h2>
+        <div class="reviews-container">
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="img/Damava.jpg" alt="Аватар пользователя">
+                    <div>
+                        <h3>Дамир Б.</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>Клавиатура MechForce Pro превзошла все ожидания! Ощущения от нажатий великолепны, подсветка яркая и настраиваемая.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="img/Lina.jpg" alt="Аватар пользователя">
+                    <div>
+                        <h3>Лина К.</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>Купила наушники SoundWave 3D, звук потрясающий! Играть стало намного интереснее, слышу каждый шаг противника.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <img src="img/Kamava.jpg" alt="Аватар пользователя">
+                    <div>
+                        <h3>Камиль С.</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <p>Заказал мышь Quantum X7, доставили на следующий день. Качество сборки на высоте, сенсор отрабатывает идеально.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="contact">
+        <h2>Оставайтесь на связи</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>г. Москва, ул. Киберспортивная, д. 42</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>+7 (800) 555-35-35</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>info@llgaming.ru</p>
+                </div>
+                <div class="social-media">
+                    <a href="#" class="social-icon"><i class="fab fa-vk"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <form class="contact-form">
+                <h3>Напишите нам</h3>
+                <div class="form-group">
+                    <input type="text" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Ваше сообщение" required></textarea>
+                </div>
+                <button type="submit" class="btn">Отправить</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <h3>LLGaming</h3>
+                    <p>Премиальная геймерская периферия для профессионалов и энтузиастов.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>Продукты</h4>
+                        <ul>
+                            <li><a href="#products">Мыши</a></li>
+                            <li><a href="#products">Клавиатуры</a></li>
+                            <li><a href="#products">Наушники</a></li>
+                            <li><a href="#products">Аксессуары</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Компания</h4>
+                        <ul>
+                            <li><a href="#about">О нас</a></li>
+                            <li><a href="#">Карьера</a></li>
+                            <li><a href="#">Партнеры</a></li>
+                            <li><a href="#">Блог</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>Поддержка</h4>
+                        <ul>
+                            <li><a href="#contact">Связаться с нами</a></li>
+                            <li><a href="#">Центр поддержки</a></li>
+                            <li><a href="#">Гарантия</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 LLGaming. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно корзины -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Корзина</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items">
+                    <!-- Здесь будут элементы корзины -->
+                    <p class="empty-cart">Ваша корзина пуста</p>
+                </div>
+                <div class="cart-total">
+                    <span>Итого:</span>
+                    <span id="cart-total-price">0 ₽</span>
+                </div>
+                <button class="btn checkout-btn">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
